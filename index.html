@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AL LIMRA Natural Powders</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand-panel">
+        <div class="brand-mark">AL</div>
+        <div>
+          <h1>AL LIMRA</h1>
+          <p>100% natural powders • No chemicals • Premium quality</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#products">Products</a>
+        <a href="#cart">Cart</a>
+        <a href="#sales">Sales</a>
+        <a href="#info">Info</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow">Natural product shop</p>
+          <h2>Sell your natural powders with instant cart billing.</h2>
+          <p class="hero-text">Create your green shop, add products instantly, collect payments with QR/UPI, and track daily, weekly, monthly, and yearly sales.</p>
+          <div class="hero-buttons">
+            <button class="info-button" data-target="about">About product</button>
+            <button class="info-button" data-target="use">How to use it</button>
+            <button class="info-button" data-target="contact">Contact details</button>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-badge">₹180</div>
+          <div class="hero-image" aria-hidden="true">
+            <span>AL LIMRA Powders</span>
+          </div>
+          <p class="hero-panel-text">Built for mobile, tablet, and desktop with product CRUD, cart, billing, print, and sales history.</p>
+        </div>
+      </section>
+
+      <section id="products" class="section-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Menu & CRUD</p>
+            <h2>Product manager and menu</h2>
+          </div>
+          <p>Use the form to create or edit products. Click any product card to add it to the cart instantly.</p>
+        </div>
+
+        <div class="grid-two">
+          <div class="panel card">
+            <h3>Manage product</h3>
+            <form id="product-form" class="product-form">
+              <input type="hidden" id="product-id" />
+              <label>
+                Product name
+                <input id="product-name" type="text" required placeholder="Enter product name" />
+              </label>
+              <label>
+                Category
+                <input id="product-category" type="text" placeholder="Optional category" />
+              </label>
+              <label>
+                Image URL
+                <input id="product-image" type="url" placeholder="Optional image URL" />
+              </label>
+              <label>
+                Price (₹)
+                <input id="product-price" type="number" min="1" value="180" required />
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="primary-button">Save product</button>
+                <button type="button" id="reset-form" class="secondary-button">Reset</button>
+              </div>
+            </form>
+            <p class="help-text">Products are stored locally, and you can add more than ten as your shop grows.</p>
+          </div>
+
+          <div class="panel card product-list-panel">
+            <h3>Product menu</h3>
+            <div id="product-list" class="product-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cart" class="section-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Cart & Billing</p>
+            <h2>Instant bill and cart</h2>
+          </div>
+          <p>Click an item to add it to the cart. Use Pay now or Print bill to close the sale.</p>
+        </div>
+
+        <div class="grid-two">
+          <div class="panel card cart-panel">
+            <h3>Shopping cart</h3>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-summary">
+              <div>
+                <p>Items <strong id="cart-count">0</strong></p>
+                <p>Total <strong>₹<span id="cart-total">0</span></strong></p>
+              </div>
+              <div class="cart-buttons">
+                <button id="clear-cart" class="secondary-button">Clear cart</button>
+                <button id="print-bill" class="primary-button">Print bill</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel card payment-panel">
+            <h3>Payment methods</h3>
+            <p>Use QR pay or connect with GPay to capture the sale.</p>
+            <div class="payment-tags">
+              <span>GPay</span>
+              <span>UPI</span>
+              <span>QR code</span>
+            </div>
+            <div class="qr-box">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi%3Aexample%40okaxis" alt="QR code for GPay" />
+              <p>Scan this QR code to complete payment.</p>
+            </div>
+            <button id="pay-now" class="primary-button">Pay now</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="sales" class="section-panel">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Sales Data</p>
+            <h2>Sales dashboard</h2>
+          </div>
+          <p>View daily, weekly, monthly, and yearly totals with date filters for history.</p>
+        </div>
+
+        <div class="sales-grid">
+          <div class="panel stats-card">
+            <h3>Summary totals</h3>
+            <div class="stats-grid">
+              <div class="stat-item"><span>Daily</span><strong id="sales-daily">₹0</strong></div>
+              <div class="stat-item"><span>Weekly</span><strong id="sales-weekly">₹0</strong></div>
+              <div class="stat-item"><span>Monthly</span><strong id="sales-monthly">₹0</strong></div>
+              <div class="stat-item"><span>Yearly</span><strong id="sales-yearly">₹0</strong></div>
+            </div>
+          </div>
+
+          <div class="panel filter-card">
+            <h3>Filter by date</h3>
+            <label>
+              Start date
+              <input id="filter-start" type="date" />
+            </label>
+            <label>
+              End date
+              <input id="filter-end" type="date" />
+            </label>
+            <div class="filter-buttons">
+              <button id="apply-filter" class="primary-button">Apply filter</button>
+              <button id="reset-filter" class="secondary-button">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel history-card">
+          <h3>Sales history</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Date</th><th>Items</th><th>Amount</th></tr>
+              </thead>
+              <tbody id="sales-table">
+                <tr><td colspan="3">No sales yet. Add items and click Pay now.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="info" class="section-panel info-section hidden">
+        <div class="panel info-card">
+          <h3 id="info-title">Info</h3>
+          <p id="info-text"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built with HTML, CSS, and JavaScript. Deploy on Netlify or Vercel for free hosting.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

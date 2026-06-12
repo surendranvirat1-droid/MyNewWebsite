@@ -1,0 +1,14 @@
+# Ignore local system and environment files
+.DS_Store
+Thumbs.db
+.env
+
+# Ignore node_modules in case local development tooling is added
+node_modules/
+
+# Ignore build artifacts
+dist/
+.build/
+
+# Netlify cache
+.netlify/
